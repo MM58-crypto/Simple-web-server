@@ -7,8 +7,8 @@ const port = 8080
 var server = http.createServer(function(req, res) {
 	// use if statements to serve the required pages
 	//index
-        var rurl = req.url
-       if (rurl == '/index') {
+        //var rurl = req.url
+       if (req.url == '/') {
 	fs.readFile('index.html', function(err, data) {
            if (err) {
 	      res.statusCode = 404
@@ -24,7 +24,7 @@ var server = http.createServer(function(req, res) {
 	}); 	
       }  
 	//about
-      if (rurl == '/about') {
+      if (req.url == '/about') {
 	  fs.readFile('about.html', function(err, data) {
            if (err) {
 	      res.statusCode = 404
@@ -40,7 +40,7 @@ var server = http.createServer(function(req, res) {
 	});
        }
 	 //contact-me     
-      if (rurl == '/contact-me') {
+      if (req.url == '/contact-me') {
 	  fs.readFile('contact-me.html', function(err, data) {
            if (err) {
 	      res.statusCode = 404
@@ -62,11 +62,8 @@ var server = http.createServer(function(req, res) {
 server.listen(port,function (error) {
 	if (error) {
 	   console.log("An error has occurred ", error )	
-
 	}
 	else {
           console.log("Server is listening on port: " + port)
-
 	}
-
 })
